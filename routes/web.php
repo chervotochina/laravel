@@ -14,5 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
+	return 'главная';
     return view('welcome');
 });
+
+	Route::get('/posts/', function () {
+		return 'список постов';
+	});
+	
+	Route::get('/post/1/', function () {
+		return 'один пост';
+	});
