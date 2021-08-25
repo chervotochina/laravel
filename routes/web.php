@@ -13,15 +13,71 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
-	return 'главная';
-    return view('welcome');
+    return view('layouts.app');
 });
 
-	Route::get('/posts/', function () {
-		return 'список постов';
-	});
+
+Route::get('blade', function () {
+    return view('layouts.child');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+use App\Http\Controllers\UserController;
+
+Route::get('/user/{id}', [UserController::class, 'show'])->where('id', '[0-9]+');
+
+use App\Http\Controllers\ProvisionServer;
+
+Route::post('/server', ProvisionServer::class);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    Route::get(/**
+     * @param $postId
+     * @param $commentId
+     * @return string
+     */ 'posts/{post}/comments/{comment?}', function ($postId, $commentId) {
+        return 'Сумма '.($postId+$commentId);
+});
+
+    /*
+Route::get('user/{name?}', function ($name = null) { // анонимная функция
+    if ($name == null) {
+        return 'юзера неет';
+    }
+    return 'User:'.$name;
+})->where('name', '[0-9]+');
+*/
 	
-	Route::get('/post/1/', function () {
-		return 'один пост';
-	});
